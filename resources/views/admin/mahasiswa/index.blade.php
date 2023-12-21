@@ -30,7 +30,7 @@
                                 <div class="btn-toolbar mb-2 mb-md-0">
                                     <div class="btn-group me-2">
                                         <a href="{{ route('admin.mahasiswa.create') }}" class="btn btn-primary">Tambah</a>
-                                        <a href="{{ route('admin.mahasiswa.create') }}" class="btn btn-outline-dark">Export</a>
+                                        <a href="{{ route('admin.mahasiswa.export') }}" class="btn btn-outline-dark">Export</a>
                                     </div>
                                 </div>
                             </div>
