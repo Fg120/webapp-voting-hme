@@ -1,140 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- saved from url=(0053)https://getbootstrap.com/docs/5.3/examples/dashboard/ -->
+<html lang="en" data-bs-theme="dark">
 
 <head>
-    <meta http-equiv="Content-Security-Policy"
-          content="upgrade-insecure-requests">
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
-    <title>@yield('title') - Voting</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-          crossorigin="anonymous">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="{{ asset('asset/home/color-modes.js.download') }}"></script>
 
 
-    {{-- ADDON LINK --}}
-    @yield('link')
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
+    <title>Dashboard HME</title>
 
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
+
+    <link rel="stylesheet" href="{{ asset('asset/home/css@3') }}">
+
+    <link href="{{ asset('asset/home/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('asset/logo-HME.png') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    {{-- <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png"> --}}
+    {{-- <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png"> --}}
+    <link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    {{-- <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon.ico"> --}}
+    <meta name="theme-color" content="#712cf9">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .btn-bd-primary {
+            --bd-violet-bg: #712cf9;
+            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+            --bs-btn-font-weight: 600;
+            --bs-btn-color: var(--bs-white);
+            --bs-btn-bg: var(--bd-violet-bg);
+            --bs-btn-border-color: var(--bd-violet-bg);
+            --bs-btn-hover-color: var(--bs-white);
+            --bs-btn-hover-bg: #6528e0;
+            --bs-btn-hover-border-color: #6528e0;
+            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+            --bs-btn-active-color: var(--bs-btn-hover-color);
+            --bs-btn-active-bg: #5a23c8;
+            --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .bd-mode-toggle {
+            z-index: 1500;
+        }
+
+        .bd-mode-toggle .dropdown-menu .active .bi {
+            display: block !important;
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('asset/home/bootstrap-icons.min.css') }}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('asset/home/dashboard.css') }}" rel="stylesheet">
 </head>
 
-<body>
-    @include('sweetalert::alert')
+<body style="">
+    {{-- THEME --}}
+    @include('admin.component.theme')
+    {{-- END THEME --}}
 
     {{-- HEADER --}}
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6"
-           style="pointer-events: none">
-            Voting
-        </a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#sidebarMenu"
-                aria-controls="sidebarMenu"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        {{-- <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search"
-            aria-label="Search"> --}}
-        <div class="navbar-nav">
-            <div class="nav-item text-nowrap">
-                <form action="{{ route('auth.logout') }}"
-                      method="get">
-                    @csrf
-                    <button class="nav-link px-3">Sign out</button>
-                </form>
-            </div>
-        </div>
-    </header>
+    @include('admin.component.header')
+    {{-- END HEADER --}}
 
     <div class="container-fluid">
         <div class="row">
             {{-- SIDEBAR --}}
-            <nav id="sidebarMenu"
-                 class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
-                <div class="position-sticky pt-3 sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <div class="nav-link">
-                                <h6>Voting</h6>
-                                {{ auth()->user()->nama }} <br>
-                                {{-- {{ auth()->user()->email }} --}}
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->segment(2) == 'dashboard' ? 'active' : '' }}"
-                               href="{{ route('admin.dashboard') }}">
-                                <i class="bi bi-house-fill align-text-bottom"></i>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->segment(2) == 'user' ? 'active' : '' }}"
-                               href="{{ route('admin.mahasiswa.index') }}">
-                                <i class="bi bi-people-fill align-text-bottom"></i>
-                                Users
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->segment(2) == 'category' ? 'active' : '' }}"
-                               href="{{ route('admin.kandidat.index') }}">
-                                <i class="bi bi-grid-fill align-text-bottom"></i>
-                                Kandidat
-                            </a>
-                        </li>
-                    </ul>
+            @include('admin.component.sidebar')
+            {{-- END SIDEBAR --}}
 
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-                        <span>Etc</span>
-                        <a class="link-secondary"
-                           href="#"
-                           aria-label="Add a new report">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 width="24"
-                                 height="24"
-                                 viewBox="0 0 24 24"
-                                 fill="none"
-                                 stroke="currentColor"
-                                 stroke-width="2"
-                                 stroke-linecap="round"
-                                 stroke-linejoin="round"
-                                 class="feather feather-plus-circle align-text-bottom"
-                                 aria-hidden="true">
-                                <circle cx="12"
-                                        cy="12"
-                                        r="10"></circle>
-                                <line x1="12"
-                                      y1="8"
-                                      x2="12"
-                                      y2="16"></line>
-                                <line x1="8"
-                                      y1="12"
-                                      x2="16"
-                                      y2="12"></line>
-                            </svg>
-                        </a>
-                    </h6>
-                </div>
-            </nav>
-
+            {{-- CONTENT --}}
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                {{-- CONTENT --}}
                 @yield('content')
+
             </main>
+            {{-- END CONTENT --}}
         </div>
     </div>
+    <script src="{{ asset('asset/home/bootstrap.bundle.min.js.download') }}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-    {{-- FOOTER --}}
-    {{-- @include('includes.admin.footer') --}}
+    <script src="{{ asset('asset/home/chart.umd.js.download') }}" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
+    <script src="{{ asset('asset/home/dashboard.js.download') }}"></script>
 
-    {{-- DEFAULT SCRIPT --}}
-    {{-- @include('includes.admin.script') --}}
 </body>
 
 </html>

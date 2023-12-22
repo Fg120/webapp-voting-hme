@@ -11,23 +11,22 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>Carousel Template · Bootstrap v5.3</title>
+    <title>Home HME UNEJ</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
-
-
 
     <link rel="stylesheet" href="{{ asset('asset/home/css@3') }}">
 
     <link href="{{ asset('asset/home/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('asset/logo-HME.png') }}">
     <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    {{-- <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png"> --}}
+    {{-- <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png"> --}}
     <link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">
     <link rel="mask-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-    <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon.ico">
+    {{-- <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon.ico"> --}}
     <meta name="theme-color" content="#712cf9">
 
 
@@ -188,7 +187,7 @@
     <header data-bs-theme="dark">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ route('home.index') }}">Voting HME 2023</a>
+                <a class="navbar-brand" href="{{ route('home.index') }}">HME UNEJ</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                         aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -337,7 +336,7 @@
   ================================================== -->
         <!-- Wrap the rest of the page in another container to center all the content. -->
         <center>
-            <h1 class="mt-3">Welcome</h1>
+            <h1 class="mt-3">Selamat Datang</h1>
         </center>
         <hr class="">
 
@@ -345,64 +344,59 @@
 
             <!-- Three columns of text below the carousel -->
             <div class="row d-flex justify-content-center">
-                @if ($kandidats->count())
-                    @foreach ($kandidats as $item)
-                        <div class="col-lg-4">
-                            <img src="{{ asset('storage/' . $item->foto) }}" height="300" width="300" class="bd-placeholder-img img-thumbnai object-fit-contain"
-                                 alt="Foto {{ $item->nama }}">
-                            <h2 class="fw-bold">Nomor Urut {{ $item->id }} </h2>
-                            <h2 class="fw-normal">{{ $item->nama }}</h2>
-                            <h2>VISI :</h2>
-                            <p>{{ $item->visi }}</p>
-                            <h2>MISI :</h2>
-                            <p>{{ $item->misi }}</p>
-                        </div><!-- /.col-lg-4 -->
-                    @endforeach
-                    <div class="col-12 d-flex justify-content-center">
-                        @if ($status == 0)
-                            <form action="{{ route('home.store') }}" method="post">
-                                @csrf
-                                <div class="input-group mb-3 shadow">
-                                    <select required name="pilihan" class="form-select" id="inputGroupSelect02">
-                                        <option value="" selected>Silahkan Pilih</option>
-                                        @foreach ($kandidats as $item)
-                                            <option value="{{ $item->id }}">{{ $item->id }}. {{ $item->nama }}</option>
-                                        @endforeach
-                                    </select>
-                                    <button type="submit" class="btn btn-primary">Kirim</button>
-                                </div>
+                @if ($settings->status == 1)
 
-                                {{-- <select class="form-control"
-                                    name="pilihan"
-                                    required>
-                                <option value=""
-                                        selected>Silahkan Pilih</option>
-                                @foreach ($kandidats as $item)
-                                    <option value="{{ $item->id }}">{{ $item->id }}. {{ $item->nama }}</option>
-                                @endforeach
-                            </select>
-                            <button type="submit"
-                                    class="btn btn-primary">Kirim</button> --}}
-                            </form>
-                        @endif
-                        @if ($status == 1)
-                            <div class="card text-bg-danger mb-3" style="max-width: 20rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">ADMIN TIDAK DAPAT VOTING</h5>
+                    @if ($kandidats->count())
+                        @foreach ($kandidats as $item)
+                            <div class="col-lg-4">
+                                <img src="{{ asset('storage/' . $item->foto) }}" height="300" width="300" class="bd-placeholder-img img-thumbnai object-fit-contain"
+                                     alt="Foto {{ $item->nama }}">
+                                <h2 class="fw-bold">Nomor Urut {{ $item->nomor }} </h2>
+                                <h2 class="fw-normal">{{ $item->nama }}</h2>
+                                @if ($item->visi != null)
+                                    <h2>VISI :</h2>
+                                    <p>{{ $item->visi }}</p>
+                                    <h2>MISI :</h2>
+                                    <p>{{ $item->misi }}</p>
+                                @endif
+                            </div><!-- /.col-lg-4 -->
+                        @endforeach
+                        <div class="col-12 d-flex justify-content-center">
+                            @if ($status == 0)
+                                <form action="{{ route('home.store') }}" method="post">
+                                    @csrf
+                                    <div class="input-group mb-3 shadow">
+                                        <select required name="pilihan" class="form-select" id="inputGroupSelect02">
+                                            <option value="" selected>Silahkan Pilih</option>
+                                            @foreach ($kandidats as $item)
+                                                <option value="{{ $item->id }}">{{ $item->id }}. {{ $item->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                        <button type="submit" class="btn btn-primary">Kirim</button>
+                                    </div>
+                                </form>
+                            @endif
+                            @if ($status == 1)
+                                <div class="card text-bg-danger mb-3" style="max-width: 20rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">ADMIN TIDAK DAPAT VOTING</h5>
+                                    </div>
                                 </div>
-                            </div>
-                            {{-- <h2>ADMIN TIDAK DAPAT VOTING</h2> --}}
-                        @endif
-                        @if ($status == 2)
-                            <div class="card text-bg-info mb-3" style="max-width: 25rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">ANDA TELAH MELAKUKAN VOTING</h5>
+                                {{-- <h2>ADMIN TIDAK DAPAT VOTING</h2> --}}
+                            @endif
+                            @if ($status == 2)
+                                <div class="card text-bg-info mb-3" style="max-width: 25rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">ANDA TELAH MELAKUKAN VOTING</h5>
+                                    </div>
                                 </div>
-                            </div>
-                        @endif
-                    </div>
+                            @endif
+                        </div>
+                    @else
+                        <h1 class="d-flex justify-content-center mt-3">TIDAK ADA KANDIDAT</h1>
+                    @endif
                 @else
-                    <h1 class="d-flex justify-content-center mt-3">TIDAK ADA KANDIDAT</h1>
+                    <h1 class="d-flex justify-content-center mt-3">BELUM WAKTUNYA MEMILIH</h1>
                 @endif
             </div><!-- /.row -->
 
@@ -414,7 +408,7 @@
         <!-- FOOTER -->
         <footer class="container">
             <p class="float-end"><a href="#">Back to top</a></p>
-            <p>© 2023 HME UNEJ.</p>
+            <p>© HME UNEJ.</p>
         </footer>
     </main>
     <script src="{{ asset('asset/home/bootstrap.bundle.min.js.download') }}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

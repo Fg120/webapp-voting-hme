@@ -1,6 +1,6 @@
 @extends('admin.base')
 
-@section('title', 'Home')
+@section('title', 'Create User')
 
 @section('content')
     <div class="content-wrapper">
@@ -11,12 +11,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card shadow">
-                            <div class="card-header justify-content-between row">
-                                <div class="col-md-6 d-flex align-items-start flex-column">
-                                    <h3 class="card-title">Tambah Mahasiswa</h3>
-                                </div>
-                                <div class="col-md-6 d-flex align-items-end flex-column">
-                                    <a href="{{ route('admin.mahasiswa.index') }}" class="btn btn-primary">Kembali</a>
+                            <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Create User</h1>
+                                <div class="btn-toolbar mb-2 mb-md-0">
+                                    <div class="btn-group me-2">
+                                        <a href="{{ route('admin.mahasiswa.index') }}" class="btn btn-primary">Kembali</a>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -27,8 +27,7 @@
                                         <div class="col-md-6">
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text" id="basic-addon1">NIM</span>
-                                                <input type="text" class="form-control" placeholder="01234567"
-                                                    name="nim" value="{{ old('nim') }}">
+                                                <input type="text" class="form-control" placeholder="01234567" name="nim" value="{{ old('nim') }}">
                                             </div>
                                             @error('nim')
                                                 <p class="text-danger fs-6">{{ $message }}</p>
@@ -37,8 +36,7 @@
                                         <div class="col-md-6">
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text" id="basic-addon1">Nama</span>
-                                                <input type="text" class="form-control" name="nama"
-                                                    value="{{ old('nama') }}">
+                                                <input type="text" class="form-control" name="nama" value="{{ old('nama') }}">
                                             </div>
                                             @error('nama')
                                                 <p class="text-danger fs-6">{{ $message }}</p>
@@ -47,8 +45,7 @@
                                         <div class="col-md-6">
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text" id="basic-addon1">HP</span>
-                                                <input type="text" class="form-control" name="hp"
-                                                    value="{{ old('hp') }}">
+                                                <input type="text" class="form-control" name="hp" value="{{ old('hp') }}">
                                             </div>
                                             @error('hp')
                                                 <p class="text-danger fs-6">{{ $message }}</p>
@@ -57,8 +54,7 @@
                                         <div class="col-md-6">
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text" id="basic-addon1">Angkatan</span>
-                                                <input type="text" class="form-control" placeholder="2000"
-                                                    name="angkatan" value="{{ old('angkatan') }}">
+                                                <input type="text" class="form-control" placeholder="2000" name="angkatan" value="{{ old('angkatan') }}">
                                             </div>
                                             @error('angkatan')
                                                 <p class="text-danger fs-6">{{ $message }}</p>
@@ -67,8 +63,7 @@
                                         <div class="col-md-6">
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text" id="basic-addon1">Password & Token</span>
-                                                <input type="password" class="form-control" placeholder="Otomatis dibuat"
-                                                    name="password" disabled>
+                                                <input type="password" class="form-control" placeholder="Otomatis dibuat" name="password" disabled>
                                             </div>
                                         </div>
                                         <div class="col-md-6">

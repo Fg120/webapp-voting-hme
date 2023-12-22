@@ -10,5 +10,5 @@ class Kandidat extends Model
     use HasFactory;
 
     // protected $table = 'kandidats_empty';
-    protected $fillable = ['nomor', 'nim', 'nama', 'visi', 'misi', 'foto'];
+    protected $fillable = ['nomor', 'nim', 'nama', 'angkatan', 'visi', 'misi', 'foto'];
 }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Exports\UsersExport;
+use App\Mail\SendMail;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -41,7 +43,7 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $attributes = Request()->validate([
-            'nim' => 'required|unique:users,nim',
+            'nim' => 'required|unique:users,nim|unique:kandidats,nim',
             'nama' => 'required',
             'angkatan' => 'required',
         ], [
@@ -52,7 +54,7 @@ class MahasiswaController extends Controller
         ]);
 
         // $passtok = Str::random(10);
-        $passtok = rand(0, 9999999999);
+        $passtok = rand(0, 99999999);
         $email = $request->nim . '@mail.unej.ac.id';
         $data = [
             'nim' => $request->nim,
@@ -128,8 +130,37 @@ class MahasiswaController extends Controller
         }
     }
 
-    public function export()
+    public function export_all()
     {
-        return Excel::download(new UsersExport, 'users.xlsx');
+        return Excel::download(new UsersExport(1), 'Data HME all users.xlsx');
+    }
+    public function export_user()
+    {
+        return Excel::download(new UsersExport(2), 'Data HME user.xlsx');
+    }
+    public function export_admin()
+    {
+        return Excel::download(new UsersExport(3), 'Data HME admin.xlsx');
+    }
+    public function export_user_unvote()
+    {
+        return Excel::download(new UsersExport(4), 'Data HME user unvote.xlsx');
+    }
+    public function export_user_voted()
+    {
+        return Excel::download(new UsersExport(5), 'Data HME user voted.xlsx');
+    }
+
+    public function sendmail(String $id)
+    {
+        try {
+            $user = User::find($id);
+            Mail::to($user->email)->send(new SendMail($user));
+
+            Alert::success('Email Behasil Dikirim');
+            return redirect(back());
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

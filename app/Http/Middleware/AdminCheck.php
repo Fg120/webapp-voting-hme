@@ -16,13 +16,13 @@ class AdminCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check()) {
-            return redirect('/login');
-        }
+        // if (!Auth::check()) {
+        //     return redirect('/login');
+        // }
         if (Auth::user()->is_admin == 1) {
             return $next($request);
         } else {
-            return back();
+            return redirect('/');
         }
     }
 }

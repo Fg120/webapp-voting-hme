@@ -1,6 +1,6 @@
 @extends('admin.base')
 
-@section('title', 'Home')
+@section('title', 'Edit Kandidat')
 
 @section('link')
 
@@ -15,12 +15,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card shadow">
-                            <div class="card-header justify-content-between row">
-                                <div class="col-md-6 d-flex align-items-start flex-column">
-                                    <h3 class="card-title">Edit Kandidat</h3>
-                                </div>
-                                <div class="col-md-6 d-flex align-items-end flex-column">
-                                    <a href="{{ route('admin.kandidat.index') }}" class="btn btn-primary">Kembali</a>
+                            <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Edit Kandidat</h1>
+                                <div class="btn-toolbar mb-2 mb-md-0">
+                                    <div class="btn-group me-2">
+                                        <a href="{{ route('admin.kandidat.index') }}" class="btn btn-primary">Kembali</a>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -44,6 +44,24 @@
                                                 <input type="text" class="form-control" name="nama" value="{{ $kandidats->nama }}">
                                             </div>
                                             @error('nama')
+                                                <p class="text-danger fs-6">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="basic-addon1">Angkatan</span>
+                                                <input type="text" class="form-control" name="angkatan" value="{{ $kandidats->angkatan }}">
+                                            </div>
+                                            @error('angkatan')
+                                                <p class="text-danger fs-6">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="basic-addon1">Nomor</span>
+                                                <input type="text" class="form-control" name="nomor" value="{{ $kandidats->nomor }}">
+                                            </div>
+                                            @error('nomor')
                                                 <p class="text-danger fs-6">{{ $message }}</p>
                                             @enderror
                                         </div>

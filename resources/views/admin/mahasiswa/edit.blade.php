@@ -1,6 +1,6 @@
 @extends('admin.base')
 
-@section('title', 'Home')
+@section('title', 'Edit User')
 
 @section('link')
 
@@ -15,12 +15,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card shadow">
-                            <div class="card-header justify-content-between row">
-                                <div class="col-md-6 d-flex align-items-start flex-column">
-                                    <h3 class="card-title">Edit Mahasiswa</h3>
-                                </div>
-                                <div class="col-md-6 d-flex align-items-end flex-column">
-                                    <a href="{{ route('admin.mahasiswa.index') }}" class="btn btn-primary">Kembali</a>
+                            <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Edit User</h1>
+                                <div class="btn-toolbar mb-2 mb-md-0">
+                                    <div class="btn-group me-2">
+                                        <a href="{{ route('admin.mahasiswa.index') }}" class="btn btn-primary">Kembali</a>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.card-header -->

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('token');
             $table->string('email');
             $table->string('hp')->nullable();
-            $table->integer('angkatan');
+            $table->string('angkatan');
             $table->boolean('already_vote')->default(0);
             $table->boolean('is_admin')->default(0);
             $table->rememberToken();

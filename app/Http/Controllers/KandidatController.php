@@ -36,14 +36,16 @@ class KandidatController extends Controller
     {
         $attributes = Request()->validate([
             'nomor' => 'required',
-            'nim' => 'required|unique:kandidats,nim',
+            'nim' => 'required|unique:kandidats,nim|unique:users,nim',
             'nama' => 'required',
+            'angkatan' => 'required',
             'foto' => 'required',
         ], [
             'nomor.required' => 'Masukkan nomor!',
             'nim.required' => 'Masukkan NIM!',
             'nim.unique' => 'NIM sudah terdaftar!',
             'nama.required' => 'Masukkan nama!',
+            'angkatan.required' => 'Masukkan angkatan!',
             'foto.required' => 'Masukkan foto!',
         ]);
 
@@ -60,6 +62,7 @@ class KandidatController extends Controller
                 'nomor' => $request->nomor,
                 'nim' => $request->nim,
                 'nama' => $request->nama,
+                'angkatan' => $request->angkatan,
                 'visi' => $request->visi,
                 'misi' => $request->misi,
                 'foto' => $photo_path,
@@ -109,7 +112,9 @@ class KandidatController extends Controller
             $kandidat->foto = $photo_path;
         }
 
+        $kandidat->nomor = $request->nomor;
         $kandidat->nama = $request->nama;
+        $kandidat->angkatan = $request->angkatan;
         $kandidat->visi = $request->visi;
         $kandidat->misi = $request->misi;
         // if ($request->photo != '') {

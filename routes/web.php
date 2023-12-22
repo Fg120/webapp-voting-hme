@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\SendMailController;
 use App\Http\Middleware\AdminCheck;
 use App\Models\mahasiswa;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +44,11 @@ Route::middleware('auth')->group(
                 Route::get('/admin/mahasiswa/show/{id}', [MahasiswaController::class, 'show'])->name('admin.mahasiswa.show');
                 Route::delete('/admin/mahasiswa/destroy/{id}', [MahasiswaController::class, 'destroy'])->name('admin.mahasiswa.destroy');
 
-                Route::get('/admin/mahasiswa/export', [MahasiswaController::class, 'export'])->name('admin.mahasiswa.export');
+                Route::get('/admin/mahasiswa/export/all', [MahasiswaController::class, 'export_all'])->name('admin.mahasiswa.export.all');
+                Route::get('/admin/mahasiswa/export/user', [MahasiswaController::class, 'export_user'])->name('admin.mahasiswa.export.user');
+                Route::get('/admin/mahasiswa/export/admin', [MahasiswaController::class, 'export_admin'])->name('admin.mahasiswa.export.admin');
+                Route::get('/admin/mahasiswa/export/user_unvote', [MahasiswaController::class, 'export_user_unvote'])->name('admin.mahasiswa.export.user_unvote');
+                Route::get('/admin/mahasiswa/export/user_voted', [MahasiswaController::class, 'export_user_voted'])->name('admin.mahasiswa.export.user_voted');
 
                 Route::get('/admin/kandidat', [KandidatController::class, 'index'])->name('admin.kandidat.index');
                 Route::get('/admin/kandidat/create', [KandidatController::class, 'create'])->name('admin.kandidat.create');
@@ -52,6 +57,12 @@ Route::middleware('auth')->group(
                 Route::post('/admin/kandidat/update/{id}', [KandidatController::class, 'update'])->name('admin.kandidat.update');
                 Route::get('/admin/kandidat/show/{id}', [KandidatController::class, 'show'])->name('admin.kandidat.show');
                 Route::delete('/admin/kandidat/destroy/{id}', [KandidatController::class, 'destroy'])->name('admin.kandidat.destroy');
+
+                Route::get('/admin/setting/', [AdminController::class, 'setting'])->name('admin.setting.index');
+                Route::post('/admin/setting/enable/{id}', [AdminController::class, 'enable'])->name('admin.setting.enable');
+                Route::post('/admin/setting/disable/{id}', [AdminController::class, 'disable'])->name('admin.setting.disable');
+
+                Route::post('/kirimemail/{id}', [MahasiswaController::class, 'sendmail'])->name('mail.send');
             }
         );
     }

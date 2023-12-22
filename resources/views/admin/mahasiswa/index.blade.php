@@ -1,8 +1,22 @@
-@extends('admin.base2')
+@extends('admin.base')
 
-@section('title', 'Home')
+@section('title', 'Data User')
 
 @section('link')
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn btn-primary">1</button>
+        <button type="button" class="btn btn-primary">2</button>
+
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+            </ul>
+        </div>
+    </div>
     <script>
         $(document).ready(function() {
             $("#myInput").on("keyup", function() {
@@ -27,10 +41,21 @@
                         <div class="card shadow">
                             <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                                 <h1 class="h2">Data User</h1>
-                                <div class="btn-toolbar mb-2 mb-md-0">
-                                    <div class="btn-group me-2">
-                                        <a href="{{ route('admin.mahasiswa.create') }}" class="btn btn-primary">Tambah</a>
-                                        <a href="{{ route('admin.mahasiswa.export') }}" class="btn btn-outline-dark">Export</a>
+                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                    <a href="{{ route('admin.mahasiswa.create') }}" class="btn btn-primary">Tambah</a>
+
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Export
+                                        </button>
+                                        <a href="mailto:test@example.com?subject=Testing out mailto!&body=This is only a test!">Second Example</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{ route('admin.mahasiswa.export.all') }}" class="dropdown-item">Export User & admin</a></li>
+                                            <li><a href="{{ route('admin.mahasiswa.export.user') }}" class="dropdown-item">Export Hanya User</a></li>
+                                            <li><a href="{{ route('admin.mahasiswa.export.admin') }}" class="dropdown-item">Export Hanya Admin</a></li>
+                                            <li><a href="{{ route('admin.mahasiswa.export.user_unvote') }}" class="dropdown-item">Export User Belum Vote</a></li>
+                                            <li><a href="{{ route('admin.mahasiswa.export.user_voted') }}" class="dropdown-item">Export User Sudah Vote</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

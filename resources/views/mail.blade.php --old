@@ -1,0 +1,7 @@
+<h3>Halo, {{ $users->nama }} !</h3>
+{{-- <p>{{  }}</p> --}}
+
+<p>Kode token anda adalah : {{ $users->token }}</p>
+<p>Silahkan login menggunakan NIM anda dan Token</p>
+
+<p>Panitia Komisi Pemilihan Kahim</p>

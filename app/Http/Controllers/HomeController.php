@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kandidat;
+use App\Models\Setting;
 use App\Models\User as ModelsUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -24,10 +25,10 @@ class HomeController extends Controller
         } else {
             $status = 2;
         }
-
-        $kandidats = Kandidat::all();
+        $settings = Setting::find(1);
+        $kandidats = Kandidat::query()->orderBy('nomor')->get();
         // dd($kandidats);
-        return view('home', compact('kandidats', 'status'));
+        return view('home', compact('kandidats', 'settings', 'status'));
     }
 
     public function store(Request $request)
