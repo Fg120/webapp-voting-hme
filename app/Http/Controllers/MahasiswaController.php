@@ -163,4 +163,15 @@ class MahasiswaController extends Controller
             throw $th;
         }
     }
+
+    public function search(Request $request)
+    {
+        $title = 'Delete User!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+        $query = $request->search;
+        $results = User::where('nim', 'LIKE', '%' . $request->search . '%')->get();
+        // $results = User::find($request);
+        return view('admin.mahasiswa.search', compact('results', 'query'));
+    }
 }

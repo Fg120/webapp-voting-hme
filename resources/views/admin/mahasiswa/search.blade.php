@@ -1,22 +1,8 @@
 @extends('admin.base')
 
-@section('title', 'Data User')
+@section('title', 'Search User')
 
 @section('link')
-    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <button type="button" class="btn btn-primary">1</button>
-        <button type="button" class="btn btn-primary">2</button>
-
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-            </ul>
-        </div>
-    </div>
     <script>
         $(document).ready(function() {
             $("#myInput").on("keyup", function() {
@@ -40,23 +26,9 @@
                     <div class="col-12">
                         <div class="card shadow">
                             <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                                <h1 class="h2">Data User</h1>
+                                <h1 class="h2">Search User</h1>
                                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                    <a href="{{ route('admin.mahasiswa.create') }}" class="btn btn-primary">Tambah</a>
-
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Export
-                                        </button>
-                                        <a href="mailto:test@example.com?subject=Testing out mailto!&body=This is only a test!">Second Example</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="{{ route('admin.mahasiswa.export.all') }}" class="dropdown-item">Export User & admin</a></li>
-                                            <li><a href="{{ route('admin.mahasiswa.export.user') }}" class="dropdown-item">Export Hanya User</a></li>
-                                            <li><a href="{{ route('admin.mahasiswa.export.admin') }}" class="dropdown-item">Export Hanya Admin</a></li>
-                                            <li><a href="{{ route('admin.mahasiswa.export.user_unvote') }}" class="dropdown-item">Export User Belum Vote</a></li>
-                                            <li><a href="{{ route('admin.mahasiswa.export.user_voted') }}" class="dropdown-item">Export User Sudah Vote</a></li>
-                                        </ul>
-                                    </div>
+                                    <a href="{{ route('admin.mahasiswa.index') }}" class="btn btn-warning">Kembali</a>
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -70,6 +42,7 @@
                                         </div>
                                         {{-- <input required name="search" class="form-control mb-3 shadow-sm" type="text" placeholder="Cari NIM..."> --}}
                                     </form>
+                                    <p>Menampilkan hasil pencarian dari : {{ $query }}</p>
                                     <table id="myTable" class="table table-bordered table-striped shadow">
                                         <thead>
 
@@ -83,7 +56,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($users as $item)
+                                            @foreach ($results as $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $item->nim }}</td>
@@ -111,7 +84,7 @@
                                         Jumlah Data : {{ $users->total() }} <br />
                                         Data Per Halaman : {{ $users->perPage() }} <br />
                                         {{ $users->links() }} --}}
-                                        {!! $users->links() !!}
+                                        {{-- {!! $users->links() !!} --}}
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +99,6 @@
         </section>
         <!-- /.content -->
     </div>
-
 @endsection
 
 @section('script')
