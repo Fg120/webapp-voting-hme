@@ -115,6 +115,8 @@
     <link href="{{ asset('asset/home/bootstrap-icons.min.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ asset('asset/home/dashboard.css') }}" rel="stylesheet">
+
+    @yield('link')
 </head>
 
 <body style="">

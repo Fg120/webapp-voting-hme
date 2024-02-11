@@ -3,30 +3,7 @@
 @section('title', 'Data User')
 
 @section('link')
-    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <button type="button" class="btn btn-primary">1</button>
-        <button type="button" class="btn btn-primary">2</button>
 
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-            </ul>
-        </div>
-    </div>
-    <script>
-        $(document).ready(function() {
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
 @endsection
 
 @section('content')
@@ -48,7 +25,7 @@
                                         <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                             Export
                                         </button>
-                                        <a href="mailto:test@example.com?subject=Testing out mailto!&body=This is only a test!">Second Example</a>
+                                        {{-- <a href="mailto:test@example.com?subject=Testing out mailto!&body=This is only a test!">Second Example</a> --}}
                                         <ul class="dropdown-menu">
                                             <li><a href="{{ route('admin.mahasiswa.export.all') }}" class="dropdown-item">Export User & admin</a></li>
                                             <li><a href="{{ route('admin.mahasiswa.export.user') }}" class="dropdown-item">Export Hanya User</a></li>

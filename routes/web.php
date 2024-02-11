@@ -25,6 +25,10 @@ Route::get('/home', function () {
     return redirect('/');
 });
 
+Route::get('/admin', function () {
+    return redirect('/admin/dashboard');
+});
+
 Route::middleware('auth')->group(
     function () {
         Route::get('/', [HomeController::class, 'index'])->name('home.index');
